@@ -100,8 +100,8 @@ print_memory(struct resource_t *resource) {
     committed_used = (oomguarpages->held * pagesize) + (kmemsize->held / 1048576.0);
     ram_total = oomguarpages->barrier * pagesize;
     ram_used = oomguarpages->held * pagesize;
-    printf("               Total       Used       Free\n");
-    printf("Instant:      %9.2fM %9.2fM %9.2fM (%.1f%% of Allocated)\n",
+    printf("                    Total       Used       Free\n");
+    printf("Instant:            %9.2fM %9.2fM %9.2fM (%.1f%% of Allocated)\n",
            privvmpages->held * pagesize,
            oomguarpages->held * pagesize,
            (privvmpages->held * pagesize) - (oomguarpages->held * pagesize),
@@ -115,7 +115,7 @@ print_memory(struct resource_t *resource) {
            kmemsize->barrier  / 1048576.0,
            kmemsize->held / 1048576.0,
            (kmemsize->barrier - kmemsize->held) / 1048576.0);  */
-    printf("Allocate: %9.2fM %9.2fM %9.2fM (%lldM Guaranteed)\n",
+    printf("Allocate:           %9.2fM %9.2fM %9.2fM (%lldM Guaranteed)\n",
            privvmpages->barrier * pagesize,
            privvmpages->held * pagesize,
            (privvmpages->barrier - privvmpages->held) * pagesize,
