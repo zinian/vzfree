@@ -106,15 +106,15 @@ print_memory(struct resource_t *resource) {
            oomguarpages->held * pagesize,
            (privvmpages->held * pagesize) - (oomguarpages->held * pagesize),
            oomguarpages->held * 100.0 / privvmpages->held);
-    printf("Kernel:             %9.2fM %9.2fM %9.2fM\n",
-           kmemsize->barrier  / 1048576.0,
-           kmemsize->held / 1048576.0,
-           (kmemsize->barrier - kmemsize->held) / 1048576.0);  
     printf("Ram:                %9.2fM %9.2fM %9.2fM (%.1f%% of VPS)\n",
            ram_total,
            ram_used,
            ram_total - ram_used,
            (ram_total - ram_used) / ram_total);
+    printf("Kernel:             %9.2fM %9.2fM %9.2fM\n",
+           kmemsize->barrier  / 1048576.0,
+           kmemsize->held / 1048576.0,
+           (kmemsize->barrier - kmemsize->held) / 1048576.0);  
     printf("Commit:             %9.2fM %9.2fM %9.2fM (%.1f%% of Allocated)\n",
            committed_total,
            committed_used,
@@ -126,7 +126,7 @@ print_memory(struct resource_t *resource) {
            (privvmpages->barrier - privvmpages->held) * pagesize,
            (long long int) (vmguarpages->barrier * pagesize));
 
-    printf("Swap:                      %9.2fM         (%.1f%% of Committed)\n",
+    printf("Swap:                         %9.2fM         (%.1f%% of Committed)\n",
            (oomguarpages->held - physpages->held) * pagesize,
            (oomguarpages->held - physpages->held) / 
             (float) (oomguarpages->held) * 100.0);  
