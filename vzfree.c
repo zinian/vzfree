@@ -105,7 +105,7 @@ print_memory(struct resource_t *resource) {
            privvmpages->held * pagesize,
            oomguarpages->held * pagesize,
            (privvmpages->held * pagesize) - (oomguarpages->held * pagesize),
-           oomguarpages->held * 100.0 / privvmpages->held;
+           oomguarpages->held * 100.0 / privvmpages->held);
     printf("Bandwagon Ram:      %9.2fM %9.2fM %9.2fM (%.1f%% of Bandwagon)\n",
            ram_total,
            ram_used,
