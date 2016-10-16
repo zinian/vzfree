@@ -1,5 +1,8 @@
-Usage
+#Usage
 ==========
 
      $ make
      $ ./vzfree
+     
+     $ make install
+     $ vzfree
