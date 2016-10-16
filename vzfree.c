@@ -120,11 +120,11 @@ print_memory(struct resource_t *resource) {
            (oomguarpages->held - physpages->held) * pagesize,
            (oomguarpages->held - physpages->held) / 
             (float) (oomguarpages->held) * 100.0);  */
-     printf("Ram:     %9.2fM %9.2fM %9.2fM (%.1f%% of Bandwagon)\n",
+     printf("Ram:      %9.2fM %9.2fM %9.2fM (%.1f%% of Bandwagon)\n",
            ram_total,
            ram_used,
            ram_total - ram_used,
-           ram_total / ram_used);
+           (ram_total - ram_used) / ram_total);
 }
 
 struct resource_t *
