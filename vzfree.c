@@ -100,7 +100,7 @@ print_memory(struct resource_t *resource) {
     committed_total = oomguarpages->barrier * pagesize;
     committed_used = (oomguarpages->held * pagesize) + (kmemsize->held / 1048576.0);
     ram_total = oomguarpages->barrier * pagesize;
-    ram_used = oomguarpages->held * pagesize
+    ram_used = oomguarpages->held * pagesize;
     printf("               Total       Used       Free\n");
     printf("Kernel:   %9.2fM %9.2fM %9.2fM\n",
            kmemsize->barrier  / 1048576.0,
