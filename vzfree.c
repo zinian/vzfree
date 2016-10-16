@@ -109,7 +109,7 @@ print_memory(struct resource_t *resource) {
     printf("Kernel:             %9.2fM %9.2fM %9.2fM\n",
            kmemsize->barrier  / 1048576.0,
            kmemsize->held / 1048576.0,
-           (kmemsize->barrier - kmemsize->held) / 1048576.0);  */
+           (kmemsize->barrier - kmemsize->held) / 1048576.0);  
     printf("Ram:                %9.2fM %9.2fM %9.2fM (%.1f%% of VPS)\n",
            ram_total,
            ram_used,
@@ -119,7 +119,7 @@ print_memory(struct resource_t *resource) {
            committed_total,
            committed_used,
            committed_total - committed_used,
-           oomguarpages->held * 100.0 / privvmpages->held);   */
+           oomguarpages->held * 100.0 / privvmpages->held);   
     printf("Allocate:           %9.2fM %9.2fM %9.2fM (%lldM Guaranteed)\n",
            privvmpages->barrier * pagesize,
            privvmpages->held * pagesize,
