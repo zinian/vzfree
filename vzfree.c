@@ -86,6 +86,8 @@ print_memory(struct resource_t *resource) {
 
     float committed_total;
     float committed_used;
+    float ram_total;
+    float ram_used;
     float pagesize; /* pagesize in mega bytes */
 
     kmemsize = find_resource(resource, "kmemsize");
