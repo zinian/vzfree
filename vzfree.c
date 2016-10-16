@@ -113,10 +113,10 @@ print_memory(struct resource_t *resource) {
            committed_used,
            committed_total - committed_used,
            oomguarpages->held * 100.0 / privvmpages->held);
-    printf("Swap:                %9.2fM            (%.1f%% of Committed)\n",
+ /*   printf("Swap:                %9.2fM            (%.1f%% of Committed)\n",
            (oomguarpages->held - physpages->held) * pagesize,
            (oomguarpages->held - physpages->held) / 
-            (float) (oomguarpages->held) * 100.0);
+            (float) (oomguarpages->held) * 100.0);  */
 }
 
 struct resource_t *
