@@ -126,7 +126,7 @@ print_memory(struct resource_t *resource) {
            (privvmpages->barrier - privvmpages->held) * pagesize,
            (long long int) (vmguarpages->barrier * pagesize));
 
-    printf("Swap:                %9.2fM            (%.1f%% of Committed)\n",
+    printf("Swap:                      %9.2fM         (%.1f%% of Committed)\n",
            (oomguarpages->held - physpages->held) * pagesize,
            (oomguarpages->held - physpages->held) / 
             (float) (oomguarpages->held) * 100.0);  
