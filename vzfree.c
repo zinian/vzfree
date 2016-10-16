@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
 struct resource_t {
     char name[32];
     long long held;
@@ -102,29 +101,34 @@ print_memory(struct resource_t *resource) {
     ram_total = oomguarpages->barrier * pagesize;
     ram_used = oomguarpages->held * pagesize;
     printf("               Total       Used       Free\n");
-    printf("Kernel:   %9.2fM %9.2fM %9.2fM\n",
+    printf("Instant:      %9.2fM %9.2fM %9.2fM (%.1f%% of Allocated)\n",
+           privvmpages->held * pagesize,
+           oomguarpages->held * pagesize,
+           (privvmpages->held * pagesize) - (oomguarpages->held * pagesize),
+           oomguarpages->held * 100.0 / privvmpages->held;
+    printf("Bandwagon Ram:      %9.2fM %9.2fM %9.2fM (%.1f%% of Bandwagon)\n",
+           ram_total,
+           ram_used,
+           ram_total - ram_used,
+           (ram_total - ram_used) / ram_total);
+/*  printf("Kernel:   %9.2fM %9.2fM %9.2fM\n",
            kmemsize->barrier  / 1048576.0,
            kmemsize->held / 1048576.0,
-           (kmemsize->barrier - kmemsize->held) / 1048576.0);
+           (kmemsize->barrier - kmemsize->held) / 1048576.0);  */
     printf("Allocate: %9.2fM %9.2fM %9.2fM (%lldM Guaranteed)\n",
            privvmpages->barrier * pagesize,
            privvmpages->held * pagesize,
            (privvmpages->barrier - privvmpages->held) * pagesize,
            (long long int) (vmguarpages->barrier * pagesize));
-    printf("Commit:   %9.2fM %9.2fM %9.2fM (%.1f%% of Allocated)\n",
+/*   printf("Commit:   %9.2fM %9.2fM %9.2fM (%.1f%% of Allocated)\n",
            committed_total,
            committed_used,
            committed_total - committed_used,
-           oomguarpages->held * 100.0 / privvmpages->held);
+           oomguarpages->held * 100.0 / privvmpages->held);   */
  /*   printf("Swap:                %9.2fM            (%.1f%% of Committed)\n",
            (oomguarpages->held - physpages->held) * pagesize,
            (oomguarpages->held - physpages->held) / 
             (float) (oomguarpages->held) * 100.0);  */
-     printf("Ram:      %9.2fM %9.2fM %9.2fM (%.1f%% of Bandwagon)\n",
-           ram_total,
-           ram_used,
-           ram_total - ram_used,
-           (ram_total - ram_used) / ram_total);
 }
 
 struct resource_t *
