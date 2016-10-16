@@ -97,7 +97,8 @@ print_memory(struct resource_t *resource) {
 
     committed_total = oomguarpages->barrier * pagesize;
     committed_used = (oomguarpages->held * pagesize) + (kmemsize->held / 1048576.0);
-
+    ram_total = oomguarpages->barrier * pagesize;
+    ram_used = oomguarpages->held * pagesize
     printf("               Total       Used       Free\n");
     printf("Kernel:   %9.2fM %9.2fM %9.2fM\n",
            kmemsize->barrier  / 1048576.0,
@@ -117,6 +118,11 @@ print_memory(struct resource_t *resource) {
            (oomguarpages->held - physpages->held) * pagesize,
            (oomguarpages->held - physpages->held) / 
             (float) (oomguarpages->held) * 100.0);  */
+    printf("RAM:   %9.2fM %9.2fM %9.2fM (%.1f%% of Bandwagon)\n",
+           ram_total,
+           ram_used,
+           ram_total - ram_used,
+           ram_total / ram_used;
 }
 
 struct resource_t *
